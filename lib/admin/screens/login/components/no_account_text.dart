@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waliima_app/admin/screens/register/register_screen.dart';
 import 'package:waliima_app/constants.dart';
 import 'package:waliima_app/size_config.dart';
 
@@ -12,11 +13,14 @@ class NoAccountText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "سجل هنا",
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(16),
-            color: kPrimaryColor,
+        GestureDetector(
+            onTap: ()=> Navigator.pushNamed(context, RegisterScreen.routeName),
+          child: Text(
+            "سجل هنا",
+            style: TextStyle(
+              fontSize: getProportionateScreenWidth(16),
+              color: kPrimaryColor,
+            ),
           ),
         ),
         Text(

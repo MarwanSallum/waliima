@@ -1,35 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:waliima_app/admin/screens/login/components/login_form.dart';
-import 'package:waliima_app/admin/screens/login/components/no_account_text.dart';
+import 'package:waliima_app/admin/screens/register/components/register_form.dart';
 import 'package:waliima_app/components/social_card.dart';
+import 'package:waliima_app/constants.dart';
 import 'package:waliima_app/size_config.dart';
+import 'package:waliima_app/term_and_condition.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: SizedBox(
+    return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(20),
-        ),
+        padding:
+            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.04,),
+              SizedBox(height: SizeConfig.screenWidth * 0.02,),
+              Text('إنشاء حساب', style: headingStyle),
               Text(
-                'أهلا بعودتك',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: getProportionateScreenWidth(28),
-                  fontWeight: FontWeight.bold,
-                ),
+                'أدخل البيانات المطلوبة لإكمال عملية التسجيل',
+                textAlign: TextAlign.center,
               ),
-              Text('سجل دخولك بإستخدام البريد الإلكتروني وكلمة المرور'),
-              SizedBox(height: SizeConfig.screenHeight * 0.08,),
-              LoginForm(),
-              SizedBox(height: SizeConfig.screenHeight * 0.08,),
+              SizedBox(height: SizeConfig.screenWidth * 0.07,),
+              RegisterForm(),
+              SizedBox(height: SizeConfig.screenWidth * 0.07,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -48,21 +43,12 @@ class Body extends StatelessWidget {
                 ],
               ),
               SizedBox(height: getProportionateScreenHight(20),),
-              NoAccountText(),
+              TermAndCondition(),
             ],
           ),
         ),
       ),
-    ));
+    );
   }
 }
-
-
-
-
-
-
-
-
-
 

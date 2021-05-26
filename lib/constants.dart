@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waliima_app/size_config.dart';
 
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
@@ -12,6 +13,13 @@ const kTextColor = Color(0xFF757575);
 
 const kAnimationDuration = Duration(milliseconds: 200);
 
+final headingStyle = TextStyle(
+  fontSize: getProportionateScreenWidth(28),
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+  height: 1.5,
+);
+
 // Form Error
 final RegExp emailValidatorRegExp =
 RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -22,4 +30,5 @@ const String kShortPassError = "كلمة المرور ضعيفه جدا";
 const String kMatchPassError = "كلمة المرور غير صحيحة";
 const String kNamelNullError = "برجاء كتابة الإسم";
 const String kPhoneNumberNullError = "برجاء كتابة رقم الهاتف";
-const String kAddressNullError = "برجاء كتابة عنوان التوصيل";
+const String kAddressNullError = "برجاء كتابة عنوان";
+

@@ -3,6 +3,7 @@ import 'package:waliima_app/admin/screens/login/login_screen.dart';
 import 'package:waliima_app/components/default_button.dart';
 import 'package:waliima_app/constants.dart';
 import 'package:waliima_app/size_config.dart';
+import 'package:waliima_app/user/screens/auth/auth_screen.dart';
 import 'package:waliima_app/user/screens/splash/components/splash_content.dart';
 
 class Body extends StatefulWidget {
@@ -66,7 +67,7 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: 'إبدأ هنا',
                       onPressed: (){
-                        Navigator.pushNamed(context, LoginScreen.routeName);
+                        Navigator.pushNamed(context, AuthScreen.routeName);
                       },
                     ),
                     Spacer(),
