@@ -32,3 +32,19 @@ const String kNamelNullError = "برجاء كتابة الإسم";
 const String kPhoneNumberNullError = "برجاء كتابة رقم الهاتف";
 const String kAddressNullError = "برجاء كتابة عنوان";
 
+final otpInputDecoration = InputDecoration(
+  contentPadding: EdgeInsets.symmetric(
+    vertical: getProportionateScreenWidth(15),
+  ),
+  enabledBorder: outlineInputBorder(),
+  focusedBorder: outlineInputBorder(),
+  border: outlineInputBorder(),
+);
+
+OutlineInputBorder outlineInputBorder() {
+  return OutlineInputBorder(
+  borderRadius: BorderRadius.circular(15),
+  borderSide: BorderSide(color: kTextColor),
+);
+}
+

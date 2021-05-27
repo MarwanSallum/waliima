@@ -4,6 +4,7 @@ import 'package:waliima_app/components/default_button.dart';
 import 'package:waliima_app/components/form_error.dart';
 import 'package:waliima_app/constants.dart';
 import 'package:waliima_app/size_config.dart';
+import 'package:waliima_app/user/screens/otp/otp_screen.dart';
 
 class AuthForm extends StatefulWidget {
   @override
@@ -44,6 +45,7 @@ class _AuthFormState extends State<AuthForm> {
               if(_formKey.currentState.validate()){
                 //TODO:: Check if phone number is admin user GO to Ammin Login Screen
                 //TODO:: Check if phone number is public GO to OTP Screen
+                Navigator.pushNamed(context, OtpScreen.routeName);
               }
             },
           ),
