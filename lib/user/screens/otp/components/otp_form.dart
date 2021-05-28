@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:waliima_app/components/default_button.dart';
 import 'package:waliima_app/constants.dart';
 import 'package:waliima_app/size_config.dart';
+import 'package:waliima_app/user/screens/home/home_screen.dart';
+
 
 class OtpForm extends StatefulWidget {
   @override
@@ -104,7 +106,10 @@ class _OtpFormState extends State<OtpForm> {
           SizedBox(height: SizeConfig.screenHeight * 0.15,),
           DefaultButton(
             text: 'تحقق',
-            onPressed: (){},
+            onPressed: (){
+              //TODO:: Check id otp code is same in server then Go to Home Screen
+              Navigator.pushNamed(context, HomeScreen.routeName);
+            },
           ),
         ],
       ),
