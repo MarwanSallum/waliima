@@ -5,6 +5,7 @@ import 'package:waliima_app/admin/screens/login/login_screen.dart';
 import 'package:waliima_app/admin/screens/register/register_screen.dart';
 import 'package:waliima_app/admin/screens/success/success_screen.dart';
 import 'package:waliima_app/user/screens/auth/auth_screen.dart';
+import 'package:waliima_app/user/screens/cart/cart_screen.dart';
 import 'package:waliima_app/user/screens/home/home_screen.dart';
 import 'package:waliima_app/user/screens/otp/otp_screen.dart';
 import 'package:waliima_app/user/screens/splash/splash.dart';
@@ -19,4 +20,5 @@ final Map<String, WidgetBuilder> routes = {
   OtpScreen.routeName: (context) => OtpScreen(),
   AuthScreen.routeName: (context) => AuthScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
+  CartScreen.routeName: (context) => CartScreen(),
 };

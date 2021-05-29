@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:waliima_app/admin/core/model/auth_response.dart';
+import 'file:///D:/Flutter%20Pro%20Projrct/waliima%20flutter%20app/waliima_app/lib/core/models/auth_response.dart';
 import 'package:waliima_app/admin/service/api/api_path.dart';
 import 'package:waliima_app/admin/service/auth/login_dto.dart';
 

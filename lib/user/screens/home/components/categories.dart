@@ -7,10 +7,10 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Map<String,dynamic>> categories = [
       {"icon": 'assets/icons/sheep.svg', 'text': 'غنم'},
-      {"icon": 'assets/icons/sheep.svg', 'text': 'غنم'},
-      {"icon": 'assets/icons/sheep.svg', 'text': 'غنم'},
-      {"icon": 'assets/icons/sheep.svg', 'text': 'غنم'},
-      {"icon": 'assets/icons/sheep.svg', 'text': 'غنم'},
+      {"icon": 'assets/icons/cow.svg', 'text': 'بقري'},
+      {"icon": 'assets/icons/camel.svg', 'text': 'حاشي'},
+      {"icon": 'assets/icons/chicken.svg', 'text': 'دجاج'},
+      {"icon": 'assets/icons/seafood.svg', 'text': 'بحري'},
     ];
 
     return Padding(

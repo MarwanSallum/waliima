@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:waliima_app/components/icon_btn_with_counter.dart';
 import 'package:waliima_app/components/search_field.dart';
 import 'package:waliima_app/size_config.dart';
+import 'package:waliima_app/user/screens/cart/cart_screen.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
@@ -20,7 +21,9 @@ class HomeHeader extends StatelessWidget {
           SearchField(),
           IconBtnWithCounter(
             svgIcon: "assets/icons/shopping-cart.svg",
-            onTap: (){},
+            onTap: (){
+              Navigator.pushNamed(context, CartScreen.routeName);
+            },
           ),
           IconBtnWithCounter(
             svgIcon: "assets/icons/bell.svg",
