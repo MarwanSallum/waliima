@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waliima_app/routes.dart';
 import 'package:waliima_app/theme.dart';
-import 'package:waliima_app/user/screens/splash/splash.dart';
+import 'package:waliima_app/views/user/screens/splash/splash.dart';
 
 void main() {
   runApp(MyApp());
