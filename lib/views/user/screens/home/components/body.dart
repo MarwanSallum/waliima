@@ -11,6 +11,7 @@ import 'package:waliima_app/views/user/screens/home/components/special_offers.da
 class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
         child: SingleChildScrollView(
           child: Column(
