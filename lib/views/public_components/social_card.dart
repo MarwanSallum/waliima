@@ -4,16 +4,16 @@ import 'package:waliima_app/size_config.dart';
 
 class SocialCard extends StatelessWidget {
   const SocialCard({
-    Key key,
+    Key? key,
     this.icon,
     this.onTap,
   }) : super(key: key);
-  final String icon;
-  final Function onTap;
+  final String? icon;
+  final Function? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap as void Function()?,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
         padding: EdgeInsets.all(getProportionateScreenWidth(12)),
@@ -23,7 +23,7 @@ class SocialCard extends StatelessWidget {
           color: Color(0xFFF5F6F9),
           shape: BoxShape.circle,
         ),
-        child: SvgPicture.asset(icon),
+        child: SvgPicture.asset(icon!),
       ),
     );
   }

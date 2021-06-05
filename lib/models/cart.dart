@@ -2,8 +2,8 @@ import 'package:waliima_app/models/product.dart';
 
 class Cart{
 
-  final Product product;
-  final int id,numberOfItem;
+  final Product? product;
+  final int? id,numberOfItem;
 
   Cart({this.id,this.product, this.numberOfItem});
 }

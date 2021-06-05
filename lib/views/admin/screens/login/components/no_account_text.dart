@@ -5,7 +5,7 @@ import 'package:waliima_app/views/admin/screens/register/register_screen.dart';
 
 class NoAccountText extends StatelessWidget {
   const NoAccountText({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

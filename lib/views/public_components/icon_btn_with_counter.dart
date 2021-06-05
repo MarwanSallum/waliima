@@ -5,10 +5,10 @@ import 'package:waliima_app/size_config.dart';
 
 class IconBtnWithCounter extends StatelessWidget {
   const IconBtnWithCounter({
-    Key key,
-    @required this.svgIcon,
+    Key? key,
+    required this.svgIcon,
     this.numberOfItem = 0,
-    @required this.onTap,
+    required this.onTap,
   }) : super(key: key);
 
   final String svgIcon;

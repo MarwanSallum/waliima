@@ -19,7 +19,7 @@ class _CartBodyState extends State<CartBody> {
         itemBuilder: (contex, index) => Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Dismissible(
-              key: Key(demoCarts[index].product.id.toString()),
+              key: Key(demoCarts[index].product!.id.toString()),
               direction: DismissDirection.endToStart,
               background: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),

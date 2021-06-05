@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:waliima_app/constants.dart';
 import 'package:waliima_app/size_config.dart';
 import 'package:waliima_app/views/user/screens/otp/components/otp_form.dart';
@@ -16,7 +17,7 @@ class OtpBody extends StatelessWidget {
           children: [
             SizedBox(height: SizeConfig.screenHeight * 0.05,),
             Text('رمز التفعيل', style: headingStyle),
-            Text('966544075***تم إرسال الرمز إلى '),
+            Text('تم إرسال الرمز إلى ${Get.arguments}'),
             buildOtpExpireTimer(),
             SizedBox(height: SizeConfig.screenHeight * 0.15,),
             OtpForm(),
@@ -43,7 +44,7 @@ class OtpBody extends StatelessWidget {
             TweenAnimationBuilder(
                 tween: Tween(begin: 30.0, end: 0),
                 duration: Duration(seconds: 30),
-                builder: (context, value, child) =>Text(
+                builder: (context, dynamic value, child) =>Text(
                   '00:${value.toInt()}',
                   style: TextStyle(color: kPrimaryColor),
                 ),

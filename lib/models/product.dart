@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:waliima_app/contracts/model.dart';
 
 class Product extends Model{
-  final int id;
+  final int? id;
   final String title;
   final String image;
   final double price;
@@ -10,9 +10,9 @@ class Product extends Model{
   final bool isAddedtoCart;
   Product({
     this.id,
-    @required this.title,
-    @required this.image,
-    @required this.price,
+    required this.title,
+    required this.image,
+    required this.price,
     this.isAddedtoCart = false,
     this.isSpecial = false,
   });

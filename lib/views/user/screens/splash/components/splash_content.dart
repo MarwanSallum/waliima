@@ -5,11 +5,11 @@ import 'package:waliima_app/size_config.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
-    Key key,
+    Key? key,
     this.text,
     this.image,
   }) : super(key: key);
-  final String text, image;
+  final String? text, image;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,9 +22,9 @@ class SplashContent extends StatelessWidget {
               color: kPrimaryColor,
               fontWeight: FontWeight.bold),
         ),
-        Text(text),
+        Text(text!),
         Spacer(flex: 2,),
-        Image.asset(image,
+        Image.asset(image!,
           height: getProportionateScreenHight(265),
           width: getProportionateScreenWidth(235),
 

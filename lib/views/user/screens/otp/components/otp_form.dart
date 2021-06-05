@@ -1,114 +1,82 @@
 
 import 'package:flutter/material.dart';
-import 'package:waliima_app/constants.dart';
+import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:waliima_app/controllers/verification_controller.dart';
 import 'package:waliima_app/size_config.dart';
 import 'package:waliima_app/views/public_components/default_button.dart';
-import 'package:waliima_app/views/user/screens/home/home_screen.dart';
 
 
-class OtpForm extends StatefulWidget {
-  @override
-  _OtpFormState createState() => _OtpFormState();
-}
-
-class _OtpFormState extends State<OtpForm> {
-  FocusNode pin2FocusNode;
-  FocusNode pin3FocusNode;
-  FocusNode pin4FocusNode;
-
-  @override
-  void initState() {
-    super.initState();
-    pin2FocusNode = FocusNode();
-    pin3FocusNode = FocusNode();
-    pin4FocusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    pin2FocusNode.dispose();
-    pin3FocusNode.dispose();
-    pin4FocusNode.dispose();
-  }
-
-  void nextField({String value, FocusNode focusNode}){
-    if(value.length == 1){
-      focusNode.requestFocus();
-    }
-  }
+class OtpForm extends GetView<VerificationController> {
   @override
   Widget build(BuildContext context) {
+    var currentFocus;
+    unfocus() {
+      currentFocus = FocusScope.of(context);
+      if (!currentFocus.hasPrimaryFocus) {
+        currentFocus.unfocus();
+      }
+    }
     return Form(
+      key: controller.formKey,
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  autofocus: true,
-                  obscureText: true,
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value){
-                    nextField(value: value, focusNode: pin2FocusNode);
-                  },
-                ),
-              ),
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  focusNode: pin2FocusNode,
-                  obscureText: true,
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value){
-                    nextField(value: value, focusNode: pin3FocusNode);
-                  },
-                ),
-              ),
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  focusNode: pin3FocusNode,
-                  obscureText: true,
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value){
-                    nextField(value: value, focusNode: pin4FocusNode);
-                  },
-                ),
-              ),
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  focusNode: pin4FocusNode,
-                  obscureText: true,
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value){
-                    pin4FocusNode.unfocus();
-                  },
-                ),
-              ),
+          PinCodeTextField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            errorTextSpace: 40.0,
+            validator: (value){
+              return controller.validateOTPCode(value!);
+            },
+            appContext: context,
+            pastedTextStyle: TextStyle(
+              color: Colors.green.shade600,
+              fontWeight: FontWeight.bold,
+            ),
+            length: 6,
+            obscureText: true,
+            obscuringCharacter: '*',
+            blinkWhenObscuring: true,
+            animationType: AnimationType.slide,
+            errorAnimationDuration: 5,
+            pinTheme: PinTheme(
+              shape: PinCodeFieldShape.box,
+              borderRadius: BorderRadius.circular(5),
+              fieldHeight: 50,
+              fieldWidth: 40,
+              activeFillColor: Colors.grey,
+              activeColor: Colors.white,
+              inactiveColor: Colors.black26.withOpacity(0.4),
+              inactiveFillColor: Colors.black26.withOpacity(0.4),
+              selectedFillColor: Colors.white,
+              selectedColor: Colors.black,
+            ),
+            cursorColor: Colors.black,
+            animationDuration: Duration(milliseconds: 300),
+            enableActiveFill: true,
+            controller: controller.otpController,
+            keyboardType: TextInputType.number,
+            boxShadows: [
+              BoxShadow(
+                offset: Offset(0, 1),
+                color: Colors.black12,
+                blurRadius: 10,
+              )
             ],
+            onCompleted: (otpCode) {
+              if (otpCode.length == 6) unfocus();
+            },
+            onChanged: (value) {
+            },
+            onSaved: (value){
+              controller.otpCode = value;
+            },
+
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.15,),
           DefaultButton(
             text: 'تحقق',
             onPressed: (){
-              //TODO:: Check id otp code is same in server then Go to Home Screen
-              Navigator.pushNamed(context, HomeScreen.routeName);
+            controller.verifyCustomerMobileNumber(Get.arguments);
             },
           ),
         ],

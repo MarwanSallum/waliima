@@ -4,7 +4,7 @@ import 'package:waliima_app/views/public_components/section_title.dart';
 
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -43,15 +43,15 @@ class SpecialOffers extends StatelessWidget {
 
 class SpecialOfferCard extends StatelessWidget {
   const SpecialOfferCard({
-    Key key,
-    @required this.category,
-    @required this.image,
-    @required this.price,
+    Key? key,
+    required this.category,
+    required this.image,
+    required this.price,
     this.onTap,
   }) : super(key: key);
   final String category, image;
   final int price;
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

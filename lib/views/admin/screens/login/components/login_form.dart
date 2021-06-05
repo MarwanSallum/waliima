@@ -14,9 +14,9 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
-  String password;
-  bool remember = false;
+  String? email;
+  String? password;
+  bool? remember = false;
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
@@ -55,8 +55,8 @@ class _LoginFormState extends State<LoginForm> {
           DefaultButton(
             text: 'تسجيل الدخول',
             onPressed: (){
-              if(_formKey.currentState.validate()){
-                _formKey.currentState.save();
+              if(_formKey.currentState!.validate()){
+                _formKey.currentState!.save();
                 // if success login in then Go to success screen
                 Navigator.pushNamedAndRemoveUntil(context, SuccessScreen.routeName, (route) => false);
               }
@@ -72,21 +72,10 @@ class _LoginFormState extends State<LoginForm> {
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value){
-        if(value.isNotEmpty && errors.contains(kPassNullError)){
-          setState(() {
-            errors.remove(kPassNullError);
-          });
-          return '';
-        }else if(value.length >= 8 && errors.contains(kShortPassError)){
-          setState(() {
-            errors.add(kShortPassError);
-          });
-          return '';
-        }
-        return null;
+
       },
       validator: (value){
-        if(value.isEmpty && !errors.contains(kPassNullError)){
+        if(value!.isEmpty && !errors.contains(kPassNullError)){
           setState(() {
             errors.add(kPassNullError);
           });
@@ -113,21 +102,10 @@ class _LoginFormState extends State<LoginForm> {
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value){
-        if(value.isNotEmpty && errors.contains(kEmailNullError)){
-          setState(() {
-            errors.remove(kEmailNullError);
-          });
-          return '';
-        }else if(emailValidatorRegExp.hasMatch(value) && !errors.contains(kInvalidEmailError)){
-          setState(() {
-            errors.remove(kInvalidEmailError);
-          });
-          return '';
-        }
-        return null;
+
       },
       validator: (value){
-        if(value.isEmpty && !errors.contains(kEmailNullError)){
+        if(value!.isEmpty && !errors.contains(kEmailNullError)){
           setState(() {
             errors.add(kEmailNullError);
           });

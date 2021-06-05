@@ -44,7 +44,7 @@ class ForgotPasswordForm extends StatefulWidget {
 
 class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
+  String? email;
   List<String> errors = [];
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
           return null;
         },
         validator: (value){
-          if(value.isEmpty && !errors.contains(kEmailNullError)){
+          if(value!.isEmpty && !errors.contains(kEmailNullError)){
             setState(() {
               errors.add(kEmailNullError);
             });
@@ -93,7 +93,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
           DefaultButton(
             text: "إستعادة كلمة المرور",
             onPressed: (){
-              if(_formKey.currentState.validate()){
+              if(_formKey.currentState!.validate()){
 
               }
             },

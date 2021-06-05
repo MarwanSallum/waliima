@@ -6,7 +6,7 @@ import 'package:waliima_app/views/public_components/default_button.dart';
 
 class CheckOutCard extends StatelessWidget {
   const CheckOutCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

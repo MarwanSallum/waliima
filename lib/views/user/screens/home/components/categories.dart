@@ -37,13 +37,13 @@ class Categories extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    Key key,
-    @required this.icon,
-    @required this.text,
-    @required this.onTap,
+    Key? key,
+    required this.icon,
+    required this.text,
+    required this.onTap,
   }) : super(key: key);
 
-  final String icon, text;
+  final String? icon, text;
   final GestureTapCallback onTap;
 
   @override
@@ -62,11 +62,11 @@ class CategoryCard extends StatelessWidget {
                   color: Color(0xFFFFECDF),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: SvgPicture.asset(icon),
+                child: SvgPicture.asset(icon!),
               ),
             ),
             const SizedBox(height: 5,),
-            Text(text, textAlign: TextAlign.center,),
+            Text(text!, textAlign: TextAlign.center,),
           ],
         ),
       ),

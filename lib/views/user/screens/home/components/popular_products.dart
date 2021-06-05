@@ -6,7 +6,7 @@ import 'package:waliima_app/views/public_components/section_title.dart';
 
 class PopularProducts extends StatelessWidget {
   const PopularProducts({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

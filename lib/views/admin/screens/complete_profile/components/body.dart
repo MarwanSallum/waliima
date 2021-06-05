@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:waliima_app/constants.dart';
 import 'package:waliima_app/size_config.dart';
-import 'file:///C:/Users/User/Desktop/flutter%20project/waliima/lib/views/public_components/term_and_condition.dart';
 import 'package:waliima_app/views/admin/screens/complete_profile/components/complete_profile_form.dart';
+import 'package:waliima_app/views/public_components/term_and_condition.dart';
 
 class CompleteProfileBody extends StatelessWidget {
   @override

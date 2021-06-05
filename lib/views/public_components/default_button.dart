@@ -5,12 +5,12 @@ import 'package:waliima_app/size_config.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
-    Key key,
+    Key? key,
     this.text,
     this.onPressed,
   }) : super(key: key);
-  final String text;
-  final Function onPressed;
+  final String? text;
+  final Function? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class DefaultButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(20)
         ),
         color: kPrimaryColor,
-        onPressed: onPressed,
+        onPressed: onPressed as void Function()?,
         child: Text(
-          text,
+          text!,
           style: TextStyle(
             fontSize: getProportionateScreenWidth(18),
             color: Colors.white,

@@ -5,8 +5,8 @@ import 'package:waliima_app/size_config.dart';
 
 class CartItemCard extends StatelessWidget {
   const CartItemCard({
-    Key key,
-    @required this.cart,
+    Key? key,
+    required this.cart,
   }) : super(key: key);
   final Cart cart;
   @override
@@ -18,7 +18,7 @@ class CartItemCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              cart.product.title,
+              cart.product!.title,
               style: TextStyle(fontSize: 16, color: Colors.black),
               maxLines: 2,
             ),
@@ -26,7 +26,7 @@ class CartItemCard extends StatelessWidget {
               children: [
                 Text('ريال', style: TextStyle(color: kPrimaryColor),),
                 SizedBox(width: getProportionateScreenWidth(5),),
-                Text('${cart.product.price}', style: TextStyle(color: kPrimaryColor),),
+                Text('${cart.product!.price}', style: TextStyle(color: kPrimaryColor),),
                 SizedBox(width: getProportionateScreenWidth(10),),
                 Text('X 2'),
               ],
@@ -44,7 +44,7 @@ class CartItemCard extends StatelessWidget {
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.product.image),
+              child: Image.asset(cart.product!.image),
             ),
           ),
         ),

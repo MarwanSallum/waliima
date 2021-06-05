@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:waliima_app/size_config.dart';
-import 'file:///C:/Users/User/Desktop/flutter%20project/waliima/lib/views/public_components/term_and_condition.dart';
+import 'package:waliima_app/views/public_components/term_and_condition.dart';
 import 'package:waliima_app/views/user/screens/auth/components/auth_form.dart';
 
 class AuthBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
         child: SizedBox(
           width: double.infinity,

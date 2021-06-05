@@ -13,9 +13,9 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
-  String email;
-  String password;
-  String conform_password;
+  String? email;
+  String? password;
+  String? conform_password;
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _RegisterFormState extends State<RegisterForm> {
           DefaultButton(
             text: 'تسجيل',
             onPressed: (){
-              if(_formKey.currentState.validate()){
+              if(_formKey.currentState!.validate()){
                 //TODO:: Go to next Screen
                 Navigator.pushNamed(context, CompleteProfileScreen.routeName);
               }
@@ -49,23 +49,9 @@ class _RegisterFormState extends State<RegisterForm> {
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty && errors.contains(kPassNullError)) {
-          setState(() {
-            errors.remove(kPassNullError);
-          });
-          return '';
-        } else if (value.length >= 8 &&
-            errors.contains(kShortPassError)) {
-          setState(() {
-            errors.add(kShortPassError);
-          });
-          return '';
-        }
-        password = value;
-        return null;
       },
       validator: (value) {
-        if (value.isEmpty && !errors.contains(kPassNullError)) {
+        if (value!.isEmpty && !errors.contains(kPassNullError)) {
           setState(() {
             errors.add(kPassNullError);
           });
@@ -96,22 +82,9 @@ class _RegisterFormState extends State<RegisterForm> {
       obscureText: true,
       onSaved: (newValue) => conform_password = newValue,
       onChanged: (value) {
-        if (password == conform_password) {
-          setState(() {
-            errors.remove(kMatchPassError);
-          });
-          return '';
-        } else if (value.length >= 8 &&
-            errors.contains(kShortPassError)) {
-          setState(() {
-            errors.add(kShortPassError);
-          });
-          return '';
-        }
-        return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
+        if (value!.isEmpty) {
           return '';
         } else if (password != value) {
           setState(() {
@@ -140,22 +113,9 @@ class _RegisterFormState extends State<RegisterForm> {
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty && errors.contains(kEmailNullError)) {
-          setState(() {
-            errors.remove(kEmailNullError);
-          });
-          return '';
-        } else if (emailValidatorRegExp.hasMatch(value) &&
-            !errors.contains(kInvalidEmailError)) {
-          setState(() {
-            errors.remove(kInvalidEmailError);
-          });
-          return '';
-        }
-        return null;
       },
       validator: (value) {
-        if (value.isEmpty && !errors.contains(kEmailNullError)) {
+        if (value!.isEmpty && !errors.contains(kEmailNullError)) {
           setState(() {
             errors.add(kEmailNullError);
           });
