@@ -5,7 +5,7 @@ class Cart{
   final Product? product;
   final int? id,numberOfItem;
 
-  Cart({this.id,this.product, this.numberOfItem});
+  Cart({ this.id,this.product, this.numberOfItem});
 }
 
 List<Cart> demoCarts = [

@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'waliima',
       theme: theme(),
+      textDirection: TextDirection.rtl,
       getPages: routes,
       home: _destination,
       initialBinding: AllControllerBinding(),

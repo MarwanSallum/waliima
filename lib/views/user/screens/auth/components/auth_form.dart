@@ -4,7 +4,8 @@ import 'package:waliima_app/controllers/auth_controller.dart';
 import 'package:waliima_app/size_config.dart';
 import 'package:waliima_app/views/public_components/custom_surffix_icon.dart';
 import 'package:waliima_app/views/public_components/default_button.dart';
-import 'package:waliima_app/views/user/screens/otp/otp_screen.dart';
+import 'package:waliima_app/views/public_components/error_view.dart';
+import 'package:waliima_app/views/public_components/loading.dart';
 
 class AuthForm extends GetView<AuthController> {
   @override
@@ -17,13 +18,15 @@ class AuthForm extends GetView<AuthController> {
           SizedBox(height: getProportionateScreenHight(30)),
           buildPhoneNumberFormField(),
           SizedBox(height: getProportionateScreenHight(30)),
+          Loading(),
+          ErrorView('فشل في تسجيل الدخول'),
+          SizedBox(height: getProportionateScreenHight(30)),
           DefaultButton(
             text: 'دخول',
-            onPressed: (){
-                //TODO:: Check if phone number is admin user GO to Ammin Login Screen
-                //TODO:: Check if phone number is public GO to OTP Screen
+            onPressed: () {
+              //TODO:: Check if phone number is admin user GO to Ammin Login Screen
+              //TODO:: Check if phone number is public GO to OTP Screen
               controller.sendOTPMessageToCustomer();
-              Get.to(()=> OtpScreen(),arguments: controller.mobile);
             },
           ),
         ],
@@ -35,18 +38,18 @@ class AuthForm extends GetView<AuthController> {
     return TextFormField(
       keyboardType: TextInputType.phone,
       controller: controller.mobileController,
-      onSaved: (value){
+      onSaved: (value) {
         controller.mobile = value;
       },
-      validator: (value){
-        return controller.validateMobile(value!);
-      },
+      validator: controller.mobileValidator,
       decoration: InputDecoration(
         labelText: 'رقم الهاتف',
         hintText: 'فضلا أدخل رقم الهاتف',
         hintTextDirection: TextDirection.rtl,
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/mobile-phone.svg",),
+        suffixIcon: CustomSurffixIcon(
+          svgIcon: "assets/icons/mobile-phone.svg",
+        ),
       ),
     );
   }
