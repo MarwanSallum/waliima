@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
                   color: kSecondaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Image.asset(product.image),
+                child: Image.network(product.image!),
               ),
             ),
             Padding(
@@ -39,7 +39,7 @@ class ProductCard extends StatelessWidget {
                 vertical: getProportionateScreenWidth(8),
               ),
               child: Text(
-                product.title,
+                product.title!,
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
                     color: Colors.black),
@@ -80,17 +80,13 @@ class ProductCard extends StatelessWidget {
                     width: getProportionateScreenWidth(32),
                     height: getProportionateScreenWidth(32),
                     decoration: BoxDecoration(
-                      color: product.isAddedtoCart
-                          ? kPrimaryColor.withOpacity(0.15)
-                          : kSecondaryColor.withOpacity(0.1),
+                      color: kPrimaryColor.withOpacity(0.15),
                       shape: BoxShape.circle,
                     ),
                     //TODO:: when product added to cart Change icon color to Primary Color
                     child: SvgPicture.asset(
                         'assets/icons/add-to-cart.svg',
-                        color: product.isAddedtoCart
-                            ? Color(0xFFFF4848)
-                            : Color(0xFFDBDEE4),
+                        color: Color(0xFFFF4848)
                     ),
                   ),
                 ),

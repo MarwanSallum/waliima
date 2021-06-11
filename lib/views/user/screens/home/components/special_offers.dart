@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:waliima_app/controllers/special_offer_controller.dart';
+import 'package:waliima_app/models/special_offer.dart';
 import 'package:waliima_app/size_config.dart';
 import 'package:waliima_app/views/public_components/section_title.dart';
+import 'package:waliima_app/views/user/screens/home/skeleton_loading/special_offers_skeleton_view.dart';
 
-class SpecialOffers extends StatelessWidget {
+class SpecialOffers extends GetView<SpecialOfferController> {
   const SpecialOffers({
     Key? key,
   }) : super(key: key);
@@ -13,27 +17,25 @@ class SpecialOffers extends StatelessWidget {
       children: [
         SectionTitle(
           text: 'الأكثر مبيعا',
-          onTap: (){},
+          onTap: () {},
         ),
-        SizedBox(height: getProportionateScreenWidth(20),),
+        SizedBox(
+          height: getProportionateScreenWidth(20),
+        ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SpecialOfferCard(
-                category: 'غنم حري',
-                price: 1060,
-                image: 'assets/images/meat.jpeg',
-                onTap: (){},
-
-              ),
-              SpecialOfferCard(
-                category: 'دجاج اليوم',
-                price: 22,
-                image: 'assets/images/advertising_2.jpg',
-                onTap: (){},
-              ),
-            ],
+          child: controller.obx(
+            (state) => Row(
+              children: [
+                ...List.generate(
+                  controller.specialOffers.length,
+                  (index) => SpecialOfferCard(
+                    specialOffer: controller.specialOffers[index],
+                  ),
+                ),
+              ],
+            ),
+            onLoading: SpecialOffersSkeletonView(),
           ),
         ),
       ],
@@ -43,14 +45,10 @@ class SpecialOffers extends StatelessWidget {
 
 class SpecialOfferCard extends StatelessWidget {
   const SpecialOfferCard({
-    Key? key,
-    required this.category,
-    required this.image,
-    required this.price,
     this.onTap,
-  }) : super(key: key);
-  final String category, image;
-  final int price;
+    required this.specialOffer,
+  });
+  final SpecialOffer specialOffer;
   final GestureTapCallback? onTap;
   @override
   Widget build(BuildContext context) {
@@ -66,8 +64,8 @@ class SpecialOfferCard extends StatelessWidget {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Image.asset(
-                  image,
+                Image.network(
+                  specialOffer.image!,
                   fit: BoxFit.cover,
                 ),
                 Container(
@@ -78,8 +76,7 @@ class SpecialOfferCard extends StatelessWidget {
                         colors: [
                           Color(0xFF343434).withOpacity(0.12),
                           Color(0xFF343434).withOpacity(0.8),
-                        ]
-                    ),
+                        ]),
                   ),
                 ),
                 Align(
@@ -89,24 +86,27 @@ class SpecialOfferCard extends StatelessWidget {
                       horizontal: getProportionateScreenWidth(20),
                       vertical: getProportionateScreenWidth(15),
                     ),
-                    child: Row(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
                             Text(
-                              'ريال',
+                              specialOffer.price!.toString(),
                               style: TextStyle(color: Colors.white),
                             ),
-                            SizedBox(width: getProportionateScreenWidth(10),),
+                            SizedBox(
+                              width: getProportionateScreenWidth(10),
+                            ),
                             Text(
-                              price.toString(),
+                              'ريال',
                               style: TextStyle(color: Colors.white),
                             ),
                           ],
                         ),
                         Text(
-                          category,
+                          specialOffer.title!,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: getProportionateScreenWidth(18),

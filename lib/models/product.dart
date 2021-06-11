@@ -1,43 +1,43 @@
-import 'package:flutter/material.dart';
 import 'package:waliima_app/contracts/model.dart';
 
-class Product extends Model{
-  final int? id;
-  final String title;
-  final String image;
-  final double price;
-  final bool isSpecial;
-  final bool isAddedtoCart;
+class Product extends Model {
   Product({
     this.id,
-    required this.title,
-    required this.image,
-    required this.price,
-    this.isAddedtoCart = false,
-    this.isSpecial = false,
+    this.title,
+    this.description,
+    this.price,
+    this.weight,
+    this.inStock,
+    this.image,
   });
+
+  int? id;
+  String? title;
+  String? description;
+  int? price;
+  int? weight;
+  int? inStock;
+  String? image;
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json["id"],
+    title: json["title"],
+    description: json["description"] == null ? null : json["description"],
+    price: json["price"],
+    weight: json["weight"],
+    inStock: json["inStock"],
+    image: json["image"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "title": title,
+    "description": description == null ? null : description,
+    "price": price,
+    "weight": weight,
+    "inStock": inStock,
+    "image": image,
+  };
 }
 
-List<Product> demo = [
-  Product(
-      id: 1,
-      title: 'غنم حري عجل - مزارع المرعى (جبلي)',
-      image: 'assets/images/sheep.png',
-      price: 1050,
-    isAddedtoCart: false,
-  ),
-  Product(
-      id: 2,
-      title: 'غنم تيس عجل - مزارع المرعى (جبلي)',
-      image: 'assets/images/sheep2.png',
-      price: 980,
-    isAddedtoCart: true,
-  ),
-  Product(
-      id: 3,
-      title: 'غنم سواكني - مزارع المرعى (مرعى)',
-      image: 'assets/images/sheep3.png',
-      price: 480,
-    isAddedtoCart: false,
-  ),
-];
+
