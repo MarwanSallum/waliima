@@ -1,5 +1,5 @@
 class ApiPath{
-  static const String BASE_URL = 'https://7b0b72a64540.ngrok.io/waliima_api/public/api/user';
+  static const String BASE_URL = 'https://e02869892c3c.ngrok.io/waliima_api/public/api/user';
   // User Auth EndPoints
   static const String SEND_OTP_VERIFICATION = BASE_URL + '/send-otp';
   static const String AUTHENTICATION = BASE_URL + '/auth';

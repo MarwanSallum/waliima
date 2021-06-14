@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:waliima_app/constants.dart';
@@ -30,7 +31,7 @@ class ProductCard extends StatelessWidget {
                   color: kSecondaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Image.network(product.image!),
+                child: buildImage(image: product.image!),
               ),
             ),
             Padding(
@@ -95,6 +96,14 @@ class ProductCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildImage({String? image}){
+    return CachedNetworkImage(
+        imageUrl: image!,
+        fit: BoxFit.cover,
+
     );
   }
 }
